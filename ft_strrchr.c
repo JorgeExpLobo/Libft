@@ -9,31 +9,23 @@
 /*   Updated: 2024/09/26 11:47:38 by jorexpos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int	ft_strlen(const char *str)
-{
-	int	counter;
-
-	counter = 0;
-	while (*str != '\0')
-	{
-		str++;
-		counter++;
-	}
-	return (counter);
-}
+#include <stddef.h>
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	const char	*pos;
-	int			i;
+	unsigned char	uc;
+	int				i;
 
-	i = 0;
-	while (i < ft_strlen(s))
+	uc = (unsigned char)c;
+	i = ft_strlen(s);
+	if (uc == 0)
+		return ((char *)s + i);
+	while (i >= 0)
 	{
-		if (s[i] == c)
-			pos = s;
-		s++;
+		if (s[i] == uc)
+			return ((char *)s + i);
+		i--;
 	}
-	return ((char *)pos);
+	return (NULL);
 }

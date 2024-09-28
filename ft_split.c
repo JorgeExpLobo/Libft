@@ -39,7 +39,7 @@ int	char_count(char const *s2, char c, int i)
 {
 	int	length;
 
-	length = 1;
+	length = 0;
 	while (s2[i] != c && s2[i] != '\0')
 	{
 		length++;

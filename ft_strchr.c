@@ -9,29 +9,18 @@
 /*   Updated: 2024/09/26 11:26:19 by jorexpos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_strlen(const char *str)
-{
-	int	counter;
-
-	counter = 0;
-	while (*str != '\0')
-	{
-		str++;
-		counter++;
-	}
-	return (counter);
-}
-
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	unsigned char	uc;
 
-	i = 0;
-	while (i < ft_strlen(s))
+	uc = (unsigned char)c;
+	while (*s)
 	{
-		if (s[i] == c)
+		if (*s == uc)
 			return ((char *)s);
 		s++;
 	}
+	if (uc == '\0')
+		return ((char *)s);
 	return (0);
 }

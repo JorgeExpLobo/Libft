@@ -11,22 +11,30 @@
 /* ************************************************************************** */
 #include <stddef.h>
 
-char	*ft_strnstr(const char *str, const char *to_find, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 {
-	unsigned int	i;
-	unsigned int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	if (to_find[0] == '\0')
-		return ((char *)str);
-	while (str[i] != '\0' || i < len)
+	j = 0;
+	if (needle == NULL && haystack == NULL && n > 0)
+		return (NULL);
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (haystack[i] != '\0' && i < n)
 	{
 		j = 0;
-		while (to_find[j] == str[i + j] && to_find[j] != '\0')
-			j++;
-		if (to_find[j] == '\0')
-			return (((char *)str) + i);
+		if (haystack[i] == needle[j])
+		{
+			while (haystack[i + j] == needle[j] && (i + j) < n)
+			{
+				if (needle[j + 1] == '\0')
+					return ((char *)haystack + i);
+				j++;
+			}
+		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
