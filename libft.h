@@ -14,6 +14,11 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 void				*ft_memset(void *b, int c, size_t len);
 size_t				ft_strlen(const char *s);
@@ -46,7 +51,8 @@ void				ft_putendl_fd(char *s, int fd);
 void				*ft_calloc(size_t count, size_t size);
 char				*ft_strdup(const char *src);
 char				*ft_itoa(int n);
-char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoin(char *s1, char const *s2);
+char				*ft_strjoin_free(char *s1, char *s2);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strmapi(char *s, char (*f)(unsigned int, char));
 typedef struct s_list
@@ -66,5 +72,16 @@ t_list				*ft_lstmap(t_list *lst,
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 char				*ft_strtrim(char const *s1, char const *set);
 char				**ft_split(char const *s, char c);
+char				*get_next_line(int fd);
+char				*ft_read_to_bookmark(int fd, char *bookmark);
+char				*ft_extract_line(char *bookmark);
+char				*ft_update_bookmark(char *bookmark);
+void				ft_putcharacter_length(char character, int *length);
+void				ft_string(char *args, int *length);
+void				ft_number(int number, int *length);
+void				ft_hexadecimal(unsigned int x, int *length, char x_or_x);
+void				ft_unsigned_int(unsigned int u, int *length);
+void				ft_pointer(size_t pointer, int *length);
+int					ft_printf(const char *string, ...);
 
 #endif

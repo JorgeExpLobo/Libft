@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jorexpos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/21 13:06:14 by jorexpos          #+#    #+#             */
-/*   Updated: 2024/09/17 19:38:35 by jorexpos         ###   ########.fr       */
+/*   Created: 2025/01/16 15:11:53 by jorexpos          #+#    #+#             */
+/*   Updated: 2025/01/16 15:11:54 by jorexpos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@ int	ft_strlen(char *str)
 	int	counter;
 
 	counter = 0;
+	if (!str)
+		return (0);
 	while (*str != '\0')
 	{
 		str++;

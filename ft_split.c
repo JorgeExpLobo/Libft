@@ -56,6 +56,7 @@ char	**free_arr(char **dst, int j)
 		free(dst[j]);
 	}
 	free(dst);
+	dst = NULL;
 	return (NULL);
 }
 

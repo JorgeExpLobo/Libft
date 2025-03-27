@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_words.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jorexpos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 10:03:24 by jorexpos          #+#    #+#             */
-/*   Updated: 2024/09/26 10:04:46 by jorexpos         ###   ########.fr       */
+/*   Created: 2025/01/16 12:23:16 by jorexpos          #+#    #+#             */
+/*   Updated: 2025/01/16 12:23:16 by jorexpos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
-#include <stddef.h>
 
-char	*ft_strjoin(char *s1, char const *s2)
+void	ft_putcharacter_length(char character, int *length)
 {
-	char	*str;
-	int		a;
-	int		b;
-	int		i;
+	write(1, &character, 1);
+	(*length)++;
+}
 
-	if (!s1 || !s2)
-		return (NULL);
-	a = ft_strlen(s1);
-	b = ft_strlen(s2);
-	str = malloc(a + b + 1);
-	if (!str)
-		return (NULL);
+void	ft_string(char *args, int *length)
+{
+	size_t	i;
+
 	i = 0;
-	while (i < a)
+	if (!args)
 	{
-		str[i] = s1[i];
+		write(1, "(null)", 6);
+		(*length) += 6;
+		return ;
+	}
+	while (args[i] != '\0')
+	{
+		ft_putcharacter_length(args[i], length);
 		i++;
 	}
-	while (i < a + b)
-	{
-		str[i] = s2[i - a];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
 }
